@@ -1,0 +1,77 @@
+[
+    {
+        "id": 1,
+        "marque": "Toyota",
+        "modele": "Camry",
+        "transmission": "Automatique",
+        "annee": "2022",
+        "image": "https://staticeu-h2.izmocars.com/toolkit/commonassets/2022/22toyota/22toyotacamryhevpremsd8fb/22toyotacamryhevpremsd8fb_pixGallery/_gallerypix/toyota_camryhevpremsd8fb_angularfront.jpg",
+        "localisation": {
+            "latitude": 48.8566,
+            "longitude": 2.3522
+        }
+        
+    },
+
+    {
+
+        "id": 2,
+        "marque": "Honda",
+        "modele": "Civic",
+        "transmission": "Manuelle",
+        "annee": "2021",
+        "image": "https://tdrresearch.azureedge.net/photos/chrome/Expanded/White/2021HOC020063/2021HOC02006301.jpg",
+        "localisation": {
+            "latitude": 40.7128,
+            "longitude": -74.0060
+        }
+        
+    },
+
+    {
+
+        "id": 3,
+        "marque": "Ford",
+        "modele": "Mustang",
+        "transmission": "Automatique",
+        "annee": "2023",
+        "image": "https://fr.ford.ca/cmslibs/content/dam/vdm_ford/live/en_ca/ford/nameplate/mustang/2023/collections/cyp/BYO_Mustang_2023.png",
+        "localisation": {
+            "latitude": 34.0522,
+            "longitude": -118.2437
+        }
+
+    },
+
+    {
+
+        "id": 4,
+        "marque": "Mercedes",
+        "modele": "Classe A",
+        "transmission": "Automatique",
+        "annee": "2022",
+        "image": "https://www.web-automobile.com/wp-content/uploads/2022/04/classe-a-2022.jpg",
+        "localisation": {
+            "latitude": 41.8781,
+            "longitude": -87.6298
+        }
+
+    },
+
+    {
+
+        "id": 5,
+        "marque": "Renault",
+        "modele": "Clio",
+        "transmission": "Manuelle",
+        "annee": "2022",
+        "image": "https://www.largus.fr/images/images/clio-etech.jpg",
+        "localisation": {
+            "latitude": 48.7305,
+            "longitude": 2.2718
+        }
+
+    }
+
+
+]
