@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, ScrollView, Image } from 'react-native';
-import { FontAwesome } from "@expo/vector-icons";
+import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Card, Button } from '@rneui/themed';
+import MapView, { Marker } from 'react-native-maps';
 import axios from 'axios';
+import { useNavigation } from '@react-navigation/native';
 
 
     const Api = () => {
     const [backendMessage, setBackendMessage] = useState([]);
+    const navigation = useNavigation();
+    
 
     useEffect(() => {
         // Appel de l'API backend
-        axios.get('http://10.74.3.159:3000/ride')
+        axios.get('http://192.168.1.12:3000/ride')
         .then((response) => {
             setBackendMessage(response.data);
         })
@@ -19,6 +22,14 @@ import axios from 'axios';
             console.error(error);
         });
     }, []);
+
+    // const handleBookClick = () => {
+    //     navigation.navigate('Book');
+    // };
+
+    const handleBookClick = (marque, id) => {
+        navigation.navigate('Book', { marque: marque, id: id });
+    };
 
 
 return (
@@ -77,43 +88,30 @@ return (
 
                         </Text>
 
-                        <Text style={styles.boldText}>Localisation :</Text>
-
-                        <Text style={styles.boldText}>Latitude:
-
-                        <Text style={styles.normalText}>
-
-                            {reponse.localisation.latitude}
-
-                        </Text>
-
-                        </Text>
-
-                        <Text style={styles.boldText}>Longitude:
-
-                        <Text style={styles.normalText}>
-
-                            {reponse.localisation.longitude}
-
-                        </Text>
-
-                        </Text>
+                        <MapView
+                            style={styles.map}
+                            initialRegion={{
+                                latitude: reponse.localisation.latitude,
+                                longitude: reponse.localisation.longitude,
+                                latitudeDelta: 0.0922,
+                                longitudeDelta: 0.0421,
+                            }}
+                            >
+                            <Marker
+                                coordinate={{
+                                latitude: reponse.localisation.latitude,
+                                longitude: reponse.localisation.longitude,
+                                }}
+                                title={reponse.marque}
+                                description={reponse.modele}
+                            />
+                        </MapView>
 
                     </View>
 
                     </View>
 
                 </View>
-{/* 
-                <View style={styles.column}>
-
-                    <Text style={styles.boldText}>Description :
-
-                    <Text style={styles.normalText}>{reponse.description}</Text>
-
-                    </Text>
-
-                </View> */}
 
                 </View>
 
@@ -125,23 +123,12 @@ return (
 
             <View style={styles.styleBtn}>
 
-            {/* <Button
+            <View style={styles.styleBtn}>
 
-                title="Réservation"
+            {/* <Button onPress={handleBookClick}>Réserver</Button> */}
+            <Button onPress={() => handleBookClick(reponse.marque, reponse.id)}>Réserver</Button>
 
-                onPress={navigationAgenda}
-
-            > */}
-            <Button>
-                Réserver
-
-            </Button>
-
-            {/* <Text style={styles.Home}>
-
-                <FontAwesome name="star" size={24} color="black" />
-
-            </Text> */}
+            </View>
 
             </View>
 
@@ -162,6 +149,12 @@ return (
 export default Api;
 
 const styles = StyleSheet.create({
+
+    map: {
+        flex: 1,
+        height: 200,
+        marginVertical: 10,
+    },
 
     image: {
     width: '100%',
